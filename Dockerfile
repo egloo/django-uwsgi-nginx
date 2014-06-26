@@ -44,9 +44,13 @@ run ln -s /home/docker/code/supervisor-app.conf /etc/supervisor/conf.d/
 # run pip install
 run pip install -r /home/docker/code/app/requirements.txt
 
+pip install djangorestframework
+pip install markdown       # Markdown support for the browsable API.
+pip install django-filter  # Filtering support
+
 # install django, normally you would remove this step because your project would already
 # be installed in the code/app/ directory
-run django-admin.py startproject website /home/docker/code/app/ 
+run django-admin.py startproject website /home/docker/code/app/
 
 expose 80
 cmd ["supervisord", "-n"]
