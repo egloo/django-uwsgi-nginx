@@ -56,7 +56,7 @@ RUN django-admin.py startproject tutorials /home/docker/code/app/
 
 RUN find /home/docker
 
-RUN python /home/docker/code/app/manage.py startapp quickstart
+RUN python /home/docker/code/app/manage.py startapp quickstart /home/docker/code/app/tutorials
 
 # RUN python /home/docker/code/app/manage.py runserver
 
