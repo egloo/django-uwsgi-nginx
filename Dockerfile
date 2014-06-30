@@ -58,10 +58,11 @@ RUN find /home/docker
 
 RUN python /home/docker/code/app/manage.py startapp quickstart
 
-#RUN python /home/docker/code/app/manage.py runserver
+RUN python /home/docker/code/app/manage.py runserver
 
 expose 80 3001
+expose 8000 3002
 
-cmd ["/bin/sh"]
+# cmd ["/bin/sh"]
 
-#cmd ["supervisord", "-n"]
+cmd ["supervisord", "-n"]
