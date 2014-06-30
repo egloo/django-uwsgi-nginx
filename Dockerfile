@@ -60,8 +60,8 @@ RUN python /home/docker/code/app/manage.py startapp quickstart
 
 # RUN python /home/docker/code/app/manage.py runserver
 
-expose 80 3001
-expose 8000 3002
+expose 80
+expose 8000
 
 # cmd ["/bin/sh"]
 
