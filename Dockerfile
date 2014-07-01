@@ -54,8 +54,6 @@ RUN pip install django-filter  # Filtering support
 # be installed in the code/app/ directory
 RUN django-admin.py startproject tutorials /home/docker/code/app/
 
-RUN find /home/docker
-
 RUN cd /home/docker/code/app/ && python ./manage.py startapp quickstart
 
 # RUN python /home/docker/code/app/manage.py runserver
