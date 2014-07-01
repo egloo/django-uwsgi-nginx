@@ -41,7 +41,7 @@ ADD . /home/docker/code/
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 RUN rm /etc/nginx/sites-enabled/default
 RUN ln -s /home/docker/code/nginx-app.conf /etc/nginx/sites-enabled/
-RUN ln -s /home/docker/code/supervisor-app.conf /etc/supervisor/conf.d/
+RUN ln -s /home/docker/code/supervisor-app.conf.docker /etc/supervisor/conf.d/
 
 # RUN pip install
 RUN pip install -r /home/docker/code/app/requirements.txt
@@ -52,9 +52,9 @@ RUN pip install django-filter  # Filtering support
 
 # install django, normally you would remove this step because your project would already
 # be installed in the code/app/ directory
-RUN django-admin.py startproject tutorials /home/docker/code/app/
+# RUN django-admin.py startproject tutorials /home/docker/code/app/
 
-RUN cd /home/docker/code/app/ && python ./manage.py startapp quickstart
+# RUN cd /home/docker/code/app/ && python ./manage.py startapp quickstart
 
 # RUN python /home/docker/code/app/manage.py runserver
 
