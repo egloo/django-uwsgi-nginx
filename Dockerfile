@@ -58,6 +58,8 @@ RUN pip install django-filter  # Filtering support
 
 # RUN python /home/docker/code/app/manage.py runserver
 
+RUN cd /home/docker/code/app && echo "yes" | python ./manage.py collectstatic
+
 expose 80
 expose 8000
 
