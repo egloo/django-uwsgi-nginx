@@ -71,7 +71,7 @@ RUN pip install django-filter  # Filtering support
 # RUN python /home/docker/code/app/manage.py runserver
 
 # Just initial run!
-RUN cd /home/docker/code/app && python ./manage.py syncdb
+RUN cd /home/docker/code/app && echo "yes" | python ./manage.py syncdb
 
 RUN cd /home/docker/code/app && echo "yes" | python ./manage.py collectstatic
 
