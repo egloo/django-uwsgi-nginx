@@ -76,7 +76,7 @@ DATABASES = {
         'NAME': 'docker',
         'USER': 'docker',
         'PASSWORD': 'docker',
-        'HOST': 'spot.lan',
+        'HOST': '10.10.14.172',
     }
 }
 
