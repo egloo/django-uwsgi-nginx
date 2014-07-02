@@ -18,6 +18,14 @@ FROM ubuntu:14.04
 MAINTAINER eGloo
 
 RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
+
+RUN echo "deb http://security.ubuntu.com/ubuntu trusty-security main restricted" > /etc/apt/sources.list
+RUN echo "deb-src http://security.ubuntu.com/ubuntu trusty-security main restricted" > /etc/apt/sources.list
+RUN echo "deb http://security.ubuntu.com/ubuntu trusty-security universe" > /etc/apt/sources.list
+RUN echo "deb-src http://security.ubuntu.com/ubuntu trusty-security universe" > /etc/apt/sources.list
+RUN echo "deb http://security.ubuntu.com/ubuntu trusty-security multiverse" > /etc/apt/sources.list
+RUN echo "deb-src http://security.ubuntu.com/ubuntu trusty-security multiverse" > /etc/apt/sources.list
+
 RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get install -y build-essential git
@@ -35,6 +43,9 @@ RUN apt-get update
 RUN add-apt-repository -y ppa:nginx/stable
 RUN apt-get install -y sqlite3
 
+RUN apt-get install -y postgresql-client-9.3 postgresql-contrib-9.3 libpq-dev libssl-dev
+RUN apt-get install -y python-psycopg2
+
 # install our code
 ADD . /home/docker/code/
 
@@ -50,7 +61,6 @@ RUN pip install -r /home/docker/code/app/requirements.txt
 RUN pip install djangorestframework
 RUN pip install markdown       # Markdown support for the browsable API.
 RUN pip install django-filter  # Filtering support
-RUN pip install psycopg2
 
 # install django, normally you would remove this step because your project would already
 # be installed in the code/app/ directory
