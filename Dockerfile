@@ -1,4 +1,5 @@
 # Copyright 2013 Thatcher Peskens
+# Copyright 2014 George Cooper (modifications)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -49,6 +50,7 @@ RUN pip install -r /home/docker/code/app/requirements.txt
 RUN pip install djangorestframework
 RUN pip install markdown       # Markdown support for the browsable API.
 RUN pip install django-filter  # Filtering support
+RUN pip install psycopg2
 
 # install django, normally you would remove this step because your project would already
 # be installed in the code/app/ directory
@@ -57,6 +59,9 @@ RUN pip install django-filter  # Filtering support
 # RUN cd /home/docker/code/app/ && python ./manage.py startapp quickstart
 
 # RUN python /home/docker/code/app/manage.py runserver
+
+# Just initial run!
+RUN cd /home/docker/code/app && python ./manage.py syncdb
 
 RUN cd /home/docker/code/app && echo "yes" | python ./manage.py collectstatic
 
